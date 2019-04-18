@@ -2,6 +2,7 @@
 
 	<head>
 		<script src="https://d3js.org/d3.v5.js"></script>
+        <script src="script.js"></script>
 		<title> D3 Tutorial </title>
 		
 		<style>
@@ -18,24 +19,18 @@
 	</head>
 
 	<body>
-		<h2>D3 Visual Elements</h2>
-		
-		<!--a new DIV element "myDiv" with a SVG element inside-->
-		<div id="myDiv">
+		<div id="mutualInformationMatrix">
 			<svg></svg>
 		</div>
-		
-		<script>
-		
-			var dataPath = "data/authors.csv";	// our data file
-			
-			d3.csv(dataPath)					// loading our data
-				.then(function(data){
-				console.log(data);
-			});
-			
-		</script>
-		
+        <div id="colourBar">
+            <svg></svg>
+        </div>
+        <div id="map">
+            <svg></svg>
+        </div>
+        <div id="wrappedBarChart">
+            <svg></svg>
+        </div>
 	</body>
 
 </html>
