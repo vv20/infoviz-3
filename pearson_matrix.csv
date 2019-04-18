@@ -1,0 +1,157 @@
+x_name,y_name,correlation
+Tariff Rate (%),Property Rights,-0.4795153092625935
+Tariff Rate (%),Judical Effectiveness,-0.4321471934910863
+Tariff Rate (%),Government Integrity,-0.39344564419867617
+Tariff Rate (%),Tax Burden,-0.2573855881434292
+Tariff Rate (%),Gov't Spending,0.07503749946464162
+Tariff Rate (%),Fiscal Health,-0.2588750841867325
+Tariff Rate (%),Business Freedom,-0.5356393907684354
+Tariff Rate (%),Labor Freedom,-0.35451853317518833
+Tariff Rate (%),Monetary Freedom,-0.4948706912415883
+Tariff Rate (%),Trade Freedom,-0.9359547468919244
+Tariff Rate (%),Investment Freedom ,-0.44378953678014443
+Tariff Rate (%),Financial Freedom,-0.4804899805088886
+Income Tax Rate (%),Property Rights,0.15202075967188158
+Income Tax Rate (%),Judical Effectiveness,0.17678455204112334
+Income Tax Rate (%),Government Integrity,0.21953398788350842
+Income Tax Rate (%),Tax Burden,-0.7787870262309751
+Income Tax Rate (%),Gov't Spending,-0.07238166278488206
+Income Tax Rate (%),Fiscal Health,0.07285210152867302
+Income Tax Rate (%),Business Freedom,0.000650162257039663
+Income Tax Rate (%),Labor Freedom,-0.15768028011748303
+Income Tax Rate (%),Monetary Freedom,0.07719805687081355
+Income Tax Rate (%),Trade Freedom,-0.02363719575207127
+Income Tax Rate (%),Investment Freedom ,0.1601103761884113
+Income Tax Rate (%),Financial Freedom,0.07573012329297038
+Corporate Tax Rate (%),Property Rights,-0.2905355586616084
+Corporate Tax Rate (%),Judical Effectiveness,-0.20948349644545206
+Corporate Tax Rate (%),Government Integrity,-0.24620085906321962
+Corporate Tax Rate (%),Tax Burden,-0.48524819592021823
+Corporate Tax Rate (%),Gov't Spending,0.2077916451782226
+Corporate Tax Rate (%),Fiscal Health,-0.06124895983600097
+Corporate Tax Rate (%),Business Freedom,-0.32218818878835737
+Corporate Tax Rate (%),Labor Freedom,-0.1679495166215195
+Corporate Tax Rate (%),Monetary Freedom,-0.1725889635043253
+Corporate Tax Rate (%),Trade Freedom,-0.2932460161477383
+Corporate Tax Rate (%),Investment Freedom ,-0.15176834552268006
+Corporate Tax Rate (%),Financial Freedom,-0.25388519095714335
+Tax Burden % of GDP,Property Rights,0.4625553823492856
+Tax Burden % of GDP,Judical Effectiveness,0.3390873094363385
+Tax Burden % of GDP,Government Integrity,0.4045626371969932
+Tax Burden % of GDP,Tax Burden,-0.5132812085284384
+Tax Burden % of GDP,Gov't Spending,-0.6107706311915951
+Tax Burden % of GDP,Fiscal Health,0.14531226931239896
+Tax Burden % of GDP,Business Freedom,0.3585747481065602
+Tax Burden % of GDP,Labor Freedom,0.0178303434355229
+Tax Burden % of GDP,Monetary Freedom,0.2431937122144754
+Tax Burden % of GDP,Trade Freedom,0.3302484212591311
+Tax Burden % of GDP,Investment Freedom ,0.42484177206163654
+Tax Burden % of GDP,Financial Freedom,0.36998175074254114
+Gov't Expenditure % of GDP ,Property Rights,0.09687806661704204
+Gov't Expenditure % of GDP ,Judical Effectiveness,0.03196966072601183
+Gov't Expenditure % of GDP ,Government Integrity,0.16369866314090498
+Gov't Expenditure % of GDP ,Tax Burden,-0.33962370355539867
+Gov't Expenditure % of GDP ,Gov't Spending,-0.8738920198958106
+Gov't Expenditure % of GDP ,Fiscal Health,-0.13794786241397136
+Gov't Expenditure % of GDP ,Business Freedom,0.0019679966321285193
+Gov't Expenditure % of GDP ,Labor Freedom,-0.10666694243810318
+Gov't Expenditure % of GDP ,Monetary Freedom,-0.12059853693878503
+Gov't Expenditure % of GDP ,Trade Freedom,-0.009850936517180567
+Gov't Expenditure % of GDP ,Investment Freedom ,-0.052823573461088145
+Gov't Expenditure % of GDP ,Financial Freedom,0.04987197980041619
+"GDP (Billions, PPP)",Property Rights,0.1654822153057233
+"GDP (Billions, PPP)",Judical Effectiveness,0.2847295780209665
+"GDP (Billions, PPP)",Government Integrity,0.19429941033462073
+"GDP (Billions, PPP)",Tax Burden,-0.07898652057712575
+"GDP (Billions, PPP)",Gov't Spending,-0.018341765215989833
+"GDP (Billions, PPP)",Fiscal Health,-0.013752587901665336
+"GDP (Billions, PPP)",Business Freedom,0.12184311513601477
+"GDP (Billions, PPP)",Labor Freedom,0.09230144798020443
+"GDP (Billions, PPP)",Monetary Freedom,0.0033307548020131044
+"GDP (Billions, PPP)",Trade Freedom,0.09901689885331283
+"GDP (Billions, PPP)",Investment Freedom ,-0.0009580113057271096
+"GDP (Billions, PPP)",Financial Freedom,0.05766275610437238
+GDP Growth Rate (%),Property Rights,-0.07460665165856173
+GDP Growth Rate (%),Judical Effectiveness,-0.022609942350122543
+GDP Growth Rate (%),Government Integrity,-0.0638367921594005
+GDP Growth Rate (%),Tax Burden,0.07083555335567493
+GDP Growth Rate (%),Gov't Spending,-0.04968716886396098
+GDP Growth Rate (%),Fiscal Health,0.04584078936216159
+GDP Growth Rate (%),Business Freedom,-0.05391363303662478
+GDP Growth Rate (%),Labor Freedom,-0.0017724858967795196
+GDP Growth Rate (%),Monetary Freedom,-0.019883242641517508
+GDP Growth Rate (%),Trade Freedom,0.05396635877714138
+GDP Growth Rate (%),Investment Freedom ,-0.10679032345331738
+GDP Growth Rate (%),Financial Freedom,0.02896299189294022
+5 Year GDP Growth Rate (%),Property Rights,0.07117556892430921
+5 Year GDP Growth Rate (%),Judical Effectiveness,0.027512986164631964
+5 Year GDP Growth Rate (%),Government Integrity,0.013486749253855112
+5 Year GDP Growth Rate (%),Tax Burden,0.154418973111545
+5 Year GDP Growth Rate (%),Gov't Spending,0.28359229487537513
+5 Year GDP Growth Rate (%),Fiscal Health,0.17501709721117964
+5 Year GDP Growth Rate (%),Business Freedom,0.03324063892137519
+5 Year GDP Growth Rate (%),Labor Freedom,0.06617707926998591
+5 Year GDP Growth Rate (%),Monetary Freedom,0.15469293969727899
+5 Year GDP Growth Rate (%),Trade Freedom,0.026589062366716636
+5 Year GDP Growth Rate (%),Investment Freedom ,0.008881461031913389
+5 Year GDP Growth Rate (%),Financial Freedom,-0.051652894641084864
+GDP per Capita (PPP),Property Rights,0.6358868957543401
+GDP per Capita (PPP),Judical Effectiveness,0.5888004519718799
+GDP per Capita (PPP),Government Integrity,0.6471151223335118
+GDP per Capita (PPP),Tax Burden,-0.04890140630128051
+GDP per Capita (PPP),Gov't Spending,-0.2363193194934312
+GDP per Capita (PPP),Fiscal Health,0.2242577422726018
+GDP per Capita (PPP),Business Freedom,0.4922403085987256
+GDP per Capita (PPP),Labor Freedom,0.2504493806444444
+GDP per Capita (PPP),Monetary Freedom,0.27159952074283467
+GDP per Capita (PPP),Trade Freedom,0.47849943149854746
+GDP per Capita (PPP),Investment Freedom ,0.4657616391118298
+GDP per Capita (PPP),Financial Freedom,0.5793495907537112
+Unemployment (%),Property Rights,-0.11414418409284009
+Unemployment (%),Judical Effectiveness,-0.039377652187238925
+Unemployment (%),Government Integrity,-0.09536225951207924
+Unemployment (%),Tax Burden,-0.10046576987108158
+Unemployment (%),Gov't Spending,-0.12633463771837766
+Unemployment (%),Fiscal Health,-0.12910619087922
+Unemployment (%),Business Freedom,0.009223574145311268
+Unemployment (%),Labor Freedom,-0.0012334958772286342
+Unemployment (%),Monetary Freedom,-0.005710744973660937
+Unemployment (%),Trade Freedom,-0.008207296466498513
+Unemployment (%),Investment Freedom ,-0.006626067404971629
+Unemployment (%),Financial Freedom,0.0028302131866006666
+Inflation (%),Property Rights,-0.19533946723203502
+Inflation (%),Judical Effectiveness,-0.1506980813455555
+Inflation (%),Government Integrity,-0.1488584070579108
+Inflation (%),Tax Burden,-0.009123422597287784
+Inflation (%),Gov't Spending,-0.007571322026783278
+Inflation (%),Fiscal Health,-0.12463889661711351
+Inflation (%),Business Freedom,-0.15990715731187014
+Inflation (%),Labor Freedom,-0.17124102961172832
+Inflation (%),Monetary Freedom,-0.5344923440188744
+Inflation (%),Trade Freedom,-0.10755404163827188
+Inflation (%),Investment Freedom ,-0.21499271901744194
+Inflation (%),Financial Freedom,-0.16816830164749305
+FDI Inflow (Millions),Property Rights,0.29100123615313855
+FDI Inflow (Millions),Judical Effectiveness,0.3616033964537939
+FDI Inflow (Millions),Government Integrity,0.3274346002943032
+FDI Inflow (Millions),Tax Burden,-0.07732736620132132
+FDI Inflow (Millions),Gov't Spending,-0.026529692965571398
+FDI Inflow (Millions),Fiscal Health,0.040304751008969464
+FDI Inflow (Millions),Business Freedom,0.2238021289525494
+FDI Inflow (Millions),Labor Freedom,0.20696526377416927
+FDI Inflow (Millions),Monetary Freedom,0.08255055464143489
+FDI Inflow (Millions),Trade Freedom,0.2029419033610244
+FDI Inflow (Millions),Investment Freedom ,0.15310668352481452
+FDI Inflow (Millions),Financial Freedom,0.24738747737102457
+Public Debt (% of GDP),Property Rights,0.09545125229325309
+Public Debt (% of GDP),Judical Effectiveness,0.07208732624077292
+Public Debt (% of GDP),Government Integrity,0.10126681659659556
+Public Debt (% of GDP),Tax Burden,-0.20372366022404473
+Public Debt (% of GDP),Gov't Spending,-0.07415644006863677
+Public Debt (% of GDP),Fiscal Health,-0.30589340706055534
+Public Debt (% of GDP),Business Freedom,0.051593277537828004
+Public Debt (% of GDP),Labor Freedom,-0.024997498913066858
+Public Debt (% of GDP),Monetary Freedom,0.04895452599205311
+Public Debt (% of GDP),Trade Freedom,-0.021257710372293192
+Public Debt (% of GDP),Investment Freedom ,0.11142012152199941
+Public Debt (% of GDP),Financial Freedom,0.0719639558603526
