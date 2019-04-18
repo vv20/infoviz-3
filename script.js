@@ -27,6 +27,8 @@ const correlationMatrixHeight =
     12 * squareSide;
 
 // colour bar constants
+const colourBarWidth = 2 * squareSide;
+const colourBarHeight = 12 * squareSide;
 
 function getHTMLColour(min, max, value) {
     if (value < 0) {
@@ -115,8 +117,57 @@ function fillCorrelationMatrix(data) {
 }
 
 function fillColourBar() {
-    svg = d3.select("#colourBar")
-        .append("svg").attr("width")
+    d3.select("#colourBar").attr("x", correlationMatrixWidth)
+    colourBar = d3.select("#colourBar").append("svg")
+    // gradient definition
+    defs = d3.select("#colourBar").append("defs");
+    topHalfGradient = defs.append("linearGradient")
+        .attr("id", "topHalfGradient")
+        .attr("x1", "0%")
+        .attr("x2", "100%")
+        .attr("y1", "0%")
+        .attr("y2", "100%")
+    topHalfGradient.append("stop")
+        .attr("class", "start")
+        .attr("offset", "0%")
+        .attr("stop-color", "#" + minColour)
+        .attr("stop-opacity", 1);
+    topHalfGradient.append("stop")
+        .attr("class", "end")
+        .attr("offset", "100%")
+        .attr("stop-color", "#" + zeroColour)
+        .attr("stop-opacity", 1);
+    bottomHalfGradient = defs.append("linearGradient")
+        .attr("id", "bottomHalfGradient")
+        .attr("x1", "0%")
+        .attr("x2", "100%")
+        .attr("y1", "0%")
+        .attr("y2", "100%")
+    bottomHalfGradient.append("stop")
+        .attr("class", "start")
+        .attr("offset", "0%")
+        .attr("stop-color", "#" + maxColour)
+        .attr("stop-opacity", 1);
+    bottomHalfGradient.append("stop")
+        .attr("class", "end")
+        .attr("offset", "100%")
+        .attr("stop-color", "#" + zeroColour)
+        .attr("stop-opacity", 1);
+
+    // colour bar construction
+    topHalf = colourBar.append("g")
+        .attr("transform", "translate(0," + correlationMatrixMargin.top + ")")
+        .append("rect")
+        .attr("width", colourBarWidth)
+        .attr("height", colourBarHeight / 2)
+        .attr("stroke", "url(#topHalfGradient)")
+    offset = correlationMatrixMargin.top + colourBarHeight / 2;
+    bottomHalf = colourBar.append("g")
+        .attr("transform", "translate(0," + offset + ")")
+        .append("rect")
+        .attr("width", colourBarWidth)
+        .attr("height", colourBarHeight / 2)
+        .attr("stroke", "url(#bottomHalfGradient)")
 }
 
 d3.csv(dataPath).then(function(data) {

@@ -1,8 +1,10 @@
 <html>
 	<head>
         <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1">
 		<script src="https://d3js.org/d3.v5.js"></script>
         <script src="script.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
 		<title>Economic Freedom Index</title>
 		
@@ -20,15 +22,23 @@
 	</head>
 
 	<body>
-		<div id="correlationMatrix">
-		</div>
-        <div id="colourBar">
-        </div>
-        <div id="map">
-            <svg></svg>
-        </div>
-        <div id="wrappedBarChart">
-            <svg></svg>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="correlationMatrix"></div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="colourBar"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <div id="wrappedBarChart"></div>
+                </div>
+                <div class="col-lg-10">
+                    <div id="map"></div>
+                </div>
+            </div>
         </div>
 	</body>
 
