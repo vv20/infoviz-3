@@ -1,3 +1,8 @@
 #correlationMatrix {
     height: 2000
 }
+
+.cell {
+    stroke-width: 1px;
+    stroke: black;
+}

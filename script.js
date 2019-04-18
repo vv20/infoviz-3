@@ -97,6 +97,7 @@ function fillCorrelationMatrix(data) {
     svg.selectAll("rect")
         .data(data).enter()
         .append("g").append("rect")
+        .attr("class", "cell")
         .attr("width", squareSide)
         .attr("height", squareSide)
         .attr("x", (d) => {return x_scale(d.x_name) - squareSide / 2})
