@@ -1,0 +1,41 @@
+<html>
+
+	<head>
+		<script src="https://d3js.org/d3.v5.js"></script>
+		<title> D3 Tutorial </title>
+		
+		<style>
+		<!--specifies that our DIV and SVG elements takes the full width and height of the HTML window-->
+			div{
+				width: 100%;
+				height: 100%
+			}
+			svg{				
+				width: 100%;		
+				height: 100%; 
+			}
+		</style>
+	</head>
+
+	<body>
+		<h2>D3 Visual Elements</h2>
+		
+		<!--a new DIV element "myDiv" with a SVG element inside-->
+		<div id="myDiv">
+			<svg></svg>
+		</div>
+		
+		<script>
+		
+			var dataPath = "data/authors.csv";	// our data file
+			
+			d3.csv(dataPath)					// loading our data
+				.then(function(data){
+				console.log(data);
+			});
+			
+		</script>
+		
+	</body>
+
+</html>
