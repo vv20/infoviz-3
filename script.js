@@ -160,14 +160,14 @@ function fillColourBar() {
         .append("rect")
         .attr("width", colourBarWidth)
         .attr("height", colourBarHeight / 2)
-        .attr("stroke", "url(#topHalfGradient)")
+        .attr("fill", "url(#topHalfGradient)")
     offset = correlationMatrixMargin.top + colourBarHeight / 2;
     bottomHalf = colourBar.append("g")
         .attr("transform", "translate(0," + offset + ")")
         .append("rect")
         .attr("width", colourBarWidth)
         .attr("height", colourBarHeight / 2)
-        .attr("stroke", "url(#bottomHalfGradient)")
+        .attr("fill", "url(#bottomHalfGradient)")
 }
 
 d3.csv(dataPath).then(function(data) {
