@@ -117,52 +117,47 @@ function fillCorrelationMatrix(data) {
 }
 
 function fillColourBar() {
-    d3.select("#colourBar").attr("x", correlationMatrixWidth)
-    colourBar = d3.select("#colourBar").append("svg")
+    svg = d3.select("#colourBar").append("svg");
     // gradient definition
-    defs = d3.select("#colourBar").append("defs");
-    topHalfGradient = defs.append("linearGradient")
+    topHalfGradient = svg
+        .append("linearGradient")
+        .attr("y1", "0%")
+        .attr("y2", "100%")
+        .attr("x1", "0")
+        .attr("x2", "0")
         .attr("id", "topHalfGradient")
-        .attr("x1", "0%")
-        .attr("x2", "100%")
-        .attr("y1", "0%")
-        .attr("y2", "100%")
-    topHalfGradient.append("stop")
-        .attr("class", "start")
-        .attr("offset", "0%")
-        .attr("stop-color", "#" + minColour)
-        .attr("stop-opacity", 1);
-    topHalfGradient.append("stop")
-        .attr("class", "end")
-        .attr("offset", "100%")
-        .attr("stop-color", "#" + zeroColour)
-        .attr("stop-opacity", 1);
-    bottomHalfGradient = defs.append("linearGradient")
-        .attr("id", "bottomHalfGradient")
-        .attr("x1", "0%")
-        .attr("x2", "100%")
-        .attr("y1", "0%")
-        .attr("y2", "100%")
-    bottomHalfGradient.append("stop")
-        .attr("class", "start")
-        .attr("offset", "0%")
+    topHalfGradient
+        .append("stop")
+        .attr("offset", "0")
         .attr("stop-color", "#" + maxColour)
-        .attr("stop-opacity", 1);
-    bottomHalfGradient.append("stop")
-        .attr("class", "end")
-        .attr("offset", "100%")
+    topHalfGradient
+        .append("stop")
+        .attr("offset", "1")
         .attr("stop-color", "#" + zeroColour)
-        .attr("stop-opacity", 1);
-
+    bottomHalfGradient = svg
+        .append("linearGradient")
+        .attr("y1", "0%")
+        .attr("y2", "100%")
+        .attr("x1", "0")
+        .attr("x2", "0")
+        .attr("id", "bottomHalfGradient")
+    bottomHalfGradient
+        .append("stop")
+        .attr("offset", "0")
+        .attr("stop-color", "#" + zeroColour)
+    bottomHalfGradient
+        .append("stop")
+        .attr("offset", "1")
+        .attr("stop-color", "#" + minColour)
     // colour bar construction
-    topHalf = colourBar.append("g")
+    topHalf = svg.append("g")
         .attr("transform", "translate(0," + correlationMatrixMargin.top + ")")
         .append("rect")
         .attr("width", colourBarWidth)
         .attr("height", colourBarHeight / 2)
         .attr("fill", "url(#topHalfGradient)")
     offset = correlationMatrixMargin.top + colourBarHeight / 2;
-    bottomHalf = colourBar.append("g")
+    bottomHalf = svg.append("g")
         .attr("transform", "translate(0," + offset + ")")
         .append("rect")
         .attr("width", colourBarWidth)
