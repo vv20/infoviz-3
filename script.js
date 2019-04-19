@@ -150,19 +150,33 @@ function fillColourBar() {
         .attr("offset", "1")
         .attr("stop-color", "#" + minColour)
     // colour bar construction
-    topHalf = svg.append("g")
-        .attr("transform", "translate(0," + correlationMatrixMargin.top + ")")
+    colourBar = svg.append("g")
+        .attr("transform", "translate(" + correlationMatrixMargin.left + "," +
+            correlationMatrixMargin.top + ")")
+    topHalf = colourBar.append("g")
         .append("rect")
         .attr("width", colourBarWidth)
         .attr("height", colourBarHeight / 2)
         .attr("fill", "url(#topHalfGradient)")
-    offset = correlationMatrixMargin.top + colourBarHeight / 2;
-    bottomHalf = svg.append("g")
-        .attr("transform", "translate(0," + offset + ")")
+        .style("top-stroke-width", "5px")
+    bottomHalf = colourBar.append("g")
+        .attr("transform", "translate(0," + colourBarHeight / 2 + ")")
         .append("rect")
         .attr("width", colourBarWidth)
         .attr("height", colourBarHeight / 2)
         .attr("fill", "url(#bottomHalfGradient)")
+    // scale construction
+    y_domain = [
+        "Directly Proportional",
+        "Unaffected",
+        "Inversely Proportional"
+    ];
+    y_range = [0, colourBarHeight / 2, colourBarHeight];
+    y_scale = d3.scaleOrdinal().domain(y_domain)
+        .range(y_range);
+    y_axis = d3.axisLeft(y_scale)
+        .tickFormat((d) => {return d});
+    colourBar.append("g").call(y_axis);
 }
 
 d3.csv(dataPath).then(function(data) {
