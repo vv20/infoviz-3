@@ -16,7 +16,7 @@ const minColour2 = parseInt(minColour.substring(2,4), 16);
 const minColour3 = parseInt(minColour.substring(4,6), 16);
 const squareSide = 40;
 const correlationMatrixMargin = {
-    top: 70,
+    top: 10,
     left: 150,
     right: 10,
     bottom: 10
