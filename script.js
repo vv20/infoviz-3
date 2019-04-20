@@ -1,4 +1,4 @@
-var dataPath = "economic_freedom_index2019_data.csv";
+var dataPath = "cleaned_dataset.csv";
 var correlationPath = "pearson_matrix.csv";
 
 // correlation matrix constants
@@ -29,6 +29,15 @@ const correlationMatrixHeight =
 // colour bar constants
 const colourBarWidth = 2 * squareSide;
 const colourBarHeight = 12 * squareSide;
+
+// spider chart constant
+const spiderChartHeight = 350;
+const spiderChartWidth = 350;
+const minCircleRadius = 10;
+const maxCircleRadius = 100;
+const spiderChartCenterColour = "#C10505";
+const spiderChartRadius = 150;
+const spiderChartFillColour = "#F43E62";
 
 function getHTMLColour(min, max, value) {
     if (value < 0) {
@@ -180,7 +189,74 @@ function fillColourBar() {
 }
 
 function fillSpiderDiagram(country, data) {
-    svg = d3.select("#spider").append("svg");
+    freedom_index_names = [
+        "Property Rights",
+        "Judical Effectiveness",
+        "Government Integrity",
+        "Tax Burden",
+        "Gov't Spending",
+        "Fiscal Health",
+        "Business Freedom",
+        "Labor Freedom",
+        "Monetary Freedom",
+        "Trade Freedom",
+        "Investment Freedom ",
+        "Financial Freedom"
+    ]
+    svg = d3.select("#spider").append("svg")
+        .attr("width", spiderChartWidth)
+        .attr("height", spiderChartHeight)
+    population_extent = d3.extent(data, (d) => {
+        return parseFloat(d["Population (Millions)"]);
+    });
+    population_scale = d3.scaleLinear()
+        .domain(population_extent)
+        .range([minCircleRadius, maxCircleRadius]);
+    // get the data
+    population = 0;
+    freedom_indices = [];
+    for (var i = 0; i < data.length; i++) {
+        if (data[i]["Country Name"] == country) {
+            population = data[i]["Population (Millions)"];
+            for (var j = 0; j < freedom_index_names.length; j++) {
+                freedom_indices.push(parseFloat(data[i][freedom_index_names[j]]));
+            }
+        }
+    }
+    centerX = spiderChartWidth / 2;
+    centerY = spiderChartHeight / 2;
+    // radial axis
+    for (var i = 0; i < freedom_indices.length; i++) {
+        angle = i * 2 * Math.PI / freedom_indices.length;
+        svg.append("line")
+            .attr("x1", centerX)
+            .attr("y1", centerY)
+            .attr("x2", centerX + Math.cos(angle) * spiderChartRadius)
+            .attr("y2", centerY + Math.sin(angle) * spiderChartRadius)
+            .style("stroke", "black")
+            .style("stroke-width", "1");
+    }
+    // spider chart
+    points = "";
+    for (var i = 0; i < freedom_indices.length; i++) {
+        angle = i * 2 * Math.PI / freedom_indices.length;
+        x = centerX + Math.cos(angle) * freedom_indices[i];
+        y = centerY + Math.sin(angle) * freedom_indices[i];
+        points += x.toString() + "," + y.toString() + " ";
+    }
+    svg.append("polygon")
+        .attr("points", points)
+        .style("stroke-width", "1")
+        .style("stroke", "black")
+        .style("fill", spiderChartFillColour)
+        .style("opacity", "0.75");
+    // central circle
+    svg.append("circle")
+        .attr("r", population_scale(population))
+        .attr("cx", centerX)
+        .attr("cy", centerY)
+        .style("fill", spiderChartCenterColour)
+        .style("opacity", "0.75");
 }
 
 function fillMap(data) {
@@ -191,7 +267,7 @@ function fillMap(data) {
 }
 
 d3.csv(dataPath).then(function(data) {
-    fillMap(data);
+    fillSpiderDiagram("France", data);
 });
 
 d3.csv(correlationPath).then((data) => {
