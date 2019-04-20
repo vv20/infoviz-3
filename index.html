@@ -2,9 +2,12 @@
 	<head>
         <meta charset="UTF-8">
         <meta name="viewpoint" content="width=device-width, initial-scale=1">
-		<script src="https://d3js.org/d3.v5.js"></script>
-        <script src="script.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="crossorigin=""></script>
+		<script src="https://d3js.org/d3.v5.js"></script>
+        <script src="http://d3js.org/topojson.v0.min.js"></script>
+        <script src="script.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 		<title>Economic Freedom Index</title>
 	</head>
@@ -25,8 +28,11 @@
                 <div class="col-lg-2">
                     <div id="wrappedBarChart"></div>
                 </div>
-                <div class="col-lg-10">
+                <div class="col-lg-6">
                     <div id="map"></div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="spider"></div>
                 </div>
             </div>
         </div>

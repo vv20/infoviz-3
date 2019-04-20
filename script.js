@@ -179,7 +179,19 @@ function fillColourBar() {
     colourBar.append("g").call(y_axis);
 }
 
+function fillSpiderDiagram(country, data) {
+    svg = d3.select("#spider").append("svg");
+}
+
+function fillMap(data) {
+    d3.json("countries.json").then((mapData) => {
+        map = L.map("map").setView([0,0], 1);
+        L.geoJson(mapData).addTo(map);
+    });
+}
+
 d3.csv(dataPath).then(function(data) {
+    fillMap(data);
 });
 
 d3.csv(correlationPath).then((data) => {
