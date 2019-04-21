@@ -16,3 +16,11 @@ svg {
     stroke-width: 1px;
     stroke: black;
 }
+
+.legend {
+    font-size: 11;
+}
+
+#colourBar {
+    position: relative;
+}

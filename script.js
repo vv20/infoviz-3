@@ -22,7 +22,7 @@ const correlationMatrixMargin = {
     bottom: 10
 }
 const correlationMatrixWidth = 
-    1000 - correlationMatrixMargin.left - correlationMatrixMargin.right;
+    800 - correlationMatrixMargin.left - correlationMatrixMargin.right;
 const correlationMatrixHeight = 
     12 * squareSide;
 
@@ -31,12 +31,13 @@ const colourBarWidth = 2 * squareSide;
 const colourBarHeight = 12 * squareSide;
 
 // spider chart constant
-const spiderChartHeight = 350;
-const spiderChartWidth = 350;
+const spiderChartHeight = 500;
+const spiderChartWidth = 500;
 const minCircleRadius = 10;
 const maxCircleRadius = 100;
 const spiderChartCenterColour = "#C10505";
 const spiderChartRadius = 150;
+const spiderChartLegendRadius = 190;
 const spiderChartFillColour = "#F43E62";
 
 function getHTMLColour(min, max, value) {
@@ -126,6 +127,9 @@ function fillCorrelationMatrix(data) {
 }
 
 function fillColourBar() {
+    colourBar = d3.select("#colourBar")
+        .style("left", correlationMatrixWidth)
+        .style("bottom", correlationMatrixHeight * 2 + squareSide);
     svg = d3.select("#colourBar").append("svg");
     // gradient definition
     topHalfGradient = svg
@@ -225,8 +229,9 @@ function fillSpiderDiagram(country, data) {
     }
     centerX = spiderChartWidth / 2;
     centerY = spiderChartHeight / 2;
-    // radial axis
+    points = "";
     for (var i = 0; i < freedom_indices.length; i++) {
+        // radial axis
         angle = i * 2 * Math.PI / freedom_indices.length;
         svg.append("line")
             .attr("x1", centerX)
@@ -235,11 +240,14 @@ function fillSpiderDiagram(country, data) {
             .attr("y2", centerY + Math.sin(angle) * spiderChartRadius)
             .style("stroke", "black")
             .style("stroke-width", "1");
-    }
-    // spider chart
-    points = "";
-    for (var i = 0; i < freedom_indices.length; i++) {
-        angle = i * 2 * Math.PI / freedom_indices.length;
+        // labels
+        svg.append("text")
+            .attr("class", "legend")
+            .text(freedom_index_names[i])
+            .attr("text-anchor", "middle")
+            .attr("x", centerX + Math.cos(angle) * spiderChartLegendRadius)
+            .attr("y", centerY + Math.sin(angle) * spiderChartLegendRadius)
+        // spider chart points
         x = centerX + Math.cos(angle) * freedom_indices[i];
         y = centerY + Math.sin(angle) * freedom_indices[i];
         points += x.toString() + "," + y.toString() + " ";
@@ -267,7 +275,7 @@ function fillMap(data) {
 }
 
 d3.csv(dataPath).then(function(data) {
-    fillSpiderDiagram("France", data);
+    fillSpiderDiagram("China", data);
 });
 
 d3.csv(correlationPath).then((data) => {
