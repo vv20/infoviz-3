@@ -110,6 +110,10 @@ function getHTMLColour(min, max, value, withNegatives) {
     return result.toUpperCase();
 }
 
+const selectorUnselectedColour = getHTMLColour(0, 4, 2, false);
+const selectorUnselectedHoverColour = getHTMLColour(0, 4, 1, false);
+const selectorSelectedColour = getHTMLColour(0, 4, 3, false);
+
 d3.csv(dataPath).then(function(data) {
     fillMap(data);
     fillSpiderDiagram("China", data);

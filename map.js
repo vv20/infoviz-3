@@ -41,9 +41,14 @@ function fillMap(data) {
                 color: "black"
             };
         }
-        L.geoJson(mapData, {style: style}).addTo(map);
+        geoJsonLayer = L.geoJson(mapData, {style: style}).addTo(map);
     });
     // selectors
+    mapChange = (feature) => {
+        return {
+            fillColor: getColour(data, feature.properties.ADMIN)
+        };
+    }
     selectors = div.append("svg")
         .style("position", "relative")
         .style("left", mapLeftMargin + mapInternalWidth)
@@ -56,18 +61,38 @@ function fillMap(data) {
         .attr("transform", (d, i) => {
             return "translate(0," + i * selectorHeight + ")";
         })
+        .on("mouseover", (d,i) => {
+            if (selectedEconomicMetric == i) return;
+            d3.select("#selector" + i)
+                .attr("fill", selectorUnselectedHoverColour);
+        })
+        .on("mouseout", (d,i) => {
+            if (selectedEconomicMetric == i) return;
+            d3.select("#selector" + i)
+                .attr("fill", selectorUnselectedColour);
+        })
+        .on("click", (d,i) => {
+            if (selectedEconomicMetric == i) return;
+            d3.select("#selector" + i)
+                .attr("fill", selectorSelectedColour);
+            d3.select("#selector" + selectedEconomicMetric)
+                .attr("fill", selectorUnselectedColour);
+            selectedEconomicMetric = i;
+            geoJsonLayer.setStyle(mapChange)
+        })
     selectors.append("rect")
+        .attr("id", (d, i) => {return "selector" + i;})
         .attr("width", selectorPaneWidth)
         .attr("height", selectorHeight)
         .attr("fill", (d, i) => {
                 if (selectedEconomicMetric == i) {
-                    return "#" + maxColour;
+                    return selectorSelectedColour;
                 }
                 else {
-                    return "#" + zeroColour;
+                    return selectorUnselectedColour;
                 }
             })
-        .style("opacity", 0.5)
+        .style("fill-opacity", 0.7)
     selectors.append("text")
         .attr("class", "legend")
         .text((d) => {return d})
