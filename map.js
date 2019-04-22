@@ -5,11 +5,15 @@ function getColour(data, country) {
     extent = d3.extent(data, (d) => {
         return parseInt(d[economic_metric_names[selectedEconomicMetric]]);
     });
+    value = getCurrentMetric(data, country);
+    return getHTMLColour(extent[0], extent[1], value, false);
+}
+
+function getCurrentMetric(data, country) {
     for (var i = 0; i < data.length; i++) {
         if (data[i]["Country Name"] == country) {
             metricName = economic_metric_names[selectedEconomicMetric];
-            value = parseInt(data[i][metricName]);
-            return getHTMLColour(extent[0], extent[1], value, false);
+            return parseInt(data[i][metricName]);
         }
     }
 }
@@ -22,8 +26,13 @@ function fillMap(data) {
     div.append("text")
         .attr("class", "sectionTitle")
         .text(mapTitle)
+        .append("br");
+    // subtitle
+    div.append("text")
+        .attr("class", "sectionTitle")
+        .attr("id", "mapSubtitle")
         .attr("x", mapLeftMargin / 2)
-        .attr("y", mapTopMargin / 2);
+        .text(economic_metric_names[selectedEconomicMetric] + ":");
     // container for the actual map
     map = div.append("div")
         .attr("x", mapLeftMargin)
@@ -44,12 +53,20 @@ function fillMap(data) {
             };
         }
         // hover callback
-        hover = (feature, layer) => {
-            feature.layer.openPopup();
+        hover = (country) => {
+            return (feature) => {
+                d3.select("#mapSubtitle")
+                    .html("")
+                    .text(economic_metric_names[selectedEconomicMetric] +
+                    ": " + getCurrentMetric(data, country))
+            }
         }
         // unhover callback
         unhover = (feature) => {
-            feature.layer.closePopup();
+            d3.select("#mapSubtitle")
+                .html("")
+                .text(economic_metric_names[selectedEconomicMetric] +
+                ":")
         }
         // click callback
         click = (country) => {
@@ -60,7 +77,8 @@ function fillMap(data) {
         // binding function
         onEachFeature = (feature, layer) => {
             layer.on({
-                mouseover: hover,
+                mouseover: hover(feature.properties.ADMIN),
+                mouseout: unhover,
                 click: click(feature.properties.ADMIN)
             })
         }
@@ -69,23 +87,6 @@ function fillMap(data) {
             onEachFeature: onEachFeature
         }).addTo(map);
     });
-    // map control
-//  ctl = L.Control.extend({
-//      options: {
-//          position: "bottomleft"
-//      }
-//  });
-//  ctl.update = function (props) {
-//      this._div.innerHTML = '<text class="legend"><b>' +
-//          economic_metric_names[selectedEconomicMetric] + '</b></text>';
-//  }
-//  ctl.onAdd = function(map) {
-//      console.log(this)
-//      this._div = L.DomUtil.create("div", "info");
-//      this.update();
-//      return this._div;
-//  }
-//  map.addControl(ctl);
     // selectors
     mapChange = (feature) => {
         return {
@@ -121,6 +122,9 @@ function fillMap(data) {
             d3.select("#selector" + selectedEconomicMetric)
                 .attr("fill", selectorUnselectedColour);
             selectedEconomicMetric = i;
+            d3.select("#mapSubtitle")
+                .html("")
+                .text(economic_metric_names[selectedEconomicMetric] + ":")
             geoJsonLayer.setStyle(mapChange)
         })
     selectors.append("rect")
