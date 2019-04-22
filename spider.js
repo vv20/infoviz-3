@@ -3,17 +3,15 @@ function fillSpiderDiagram(country, data) {
         .style("left", mapWidth + selectorPaneWidth)
         .style("bottom", mapHeight + barChartHeight)
     svg = div.append("svg")
-        .attr("width", spiderChartWidth)
+        .attr("width", spiderChartWidth + 200)
         .attr("height", spiderChartHeight)
-        .style("position", "relative")
-        .style("left", spiderChartLeftMargin)
+    // data
     population_extent = d3.extent(data, (d) => {
         return parseFloat(d["Population (Millions)"]);
     });
     population_scale = d3.scaleLinear()
         .domain(population_extent)
         .range([minCircleRadius, maxCircleRadius]);
-    // get the data
     population = 0;
     freedom_indices = [];
     for (var i = 0; i < data.length; i++) {

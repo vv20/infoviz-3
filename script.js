@@ -93,7 +93,7 @@ const selectorPaneWidth = 200;
 const spiderChartLeftMargin = 130;
 const spiderChartTopMargin = 40;
 const spiderChartHeight = 500;
-const spiderChartWidth = 500;
+const spiderChartWidth = 800;
 const minCircleRadius = 10;
 const maxCircleRadius = 100;
 const spiderChartCenterColour = "#" + maxColour;
@@ -144,7 +144,7 @@ const selectorSelectedColour = getHTMLColour(0, 4, 3, false);
 
 d3.csv(dataPath).then(function(data) {
     fillMap(data);
-    fillSpiderDiagram("China", data);
+    fillSpiderDiagram(selectedCountry, data);
     fillBarChart(data);
 });
 
