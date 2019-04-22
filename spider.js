@@ -29,7 +29,7 @@ function fillSpiderDiagram(country, data) {
     svg.append("text")
         .attr("class", "sectionTitle")
         .text(spiderChartTitle + country)
-        .attr("x", spiderChartLeftMargin / 2)
+        .attr("x", spiderChartLeftMargin / 2 + barChartLeftMargin)
         .attr("y", spiderChartTopMargin / 2)
     // radial axis
     svg.selectAll("line")
