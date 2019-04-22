@@ -6,6 +6,9 @@
         <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="crossorigin=""></script>
 		<script src="https://d3js.org/d3.v5.js"></script>
         <script src="http://d3js.org/topojson.v0.min.js"></script>
+        <script src="matrix.js"></script>
+        <script src="spider.js"></script>
+        <script src="map.js"></script>
         <script src="script.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 		<title>Economic Freedom Index</title>
@@ -13,11 +16,10 @@
 
 	<body>
         <h1>Economic Freedom Index</h1>
-        <h2>Correlation Between Economic Performance and Freedom Indices</h2>
         <div id="correlationMatrix"></div>
-        <div id="colourBar"></div>
         <div id="wrappedBarChart"></div>
         <div id="map"></div>
+        <h2 id="spiderChartTitle">Freedom Indices of a Country</h2>
         <div id="spider"></div>
 	</body>
 
