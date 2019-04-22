@@ -46,15 +46,16 @@ function fillSpiderDiagram(country, data) {
         .style("stroke", "black")
         .style("stroke-width", "1");
     // labels
+    fin = [""].concat(freedom_index_names)
     svg.selectAll("text")
-        .data(freedom_index_names).enter()
+        .data(fin).enter()
         .append("text")
         .attr("class", "legend")
         .text((d) => {return d})
         .attr("text-anchor", "middle")
-        .attr("x", (d, i) => {return centerX + Math.cos(angle(i)) *
+        .attr("x", (d, i) => {return centerX + Math.cos(angle(i-1)) *
                 spiderChartLegendRadius})
-        .attr("y", (d, i) => {return centerY + Math.sin(angle(i)) *
+        .attr("y", (d, i) => {return centerY + Math.sin(angle(i-1)) *
                 spiderChartLegendRadius})
     // spider chart points
     points = "";
