@@ -1,7 +1,7 @@
 function fillSpiderDiagram(country, data) {
     div = d3.select("#spider").html("")
         .style("left", mapWidth + selectorPaneWidth)
-        .style("bottom", mapHeight)
+        .style("bottom", mapHeight + barChartHeight)
     svg = div.append("svg")
         .attr("width", spiderChartWidth)
         .attr("height", spiderChartHeight)

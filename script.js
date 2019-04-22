@@ -32,7 +32,7 @@ economic_metric_names = [
     "Public Debt (% of GDP)"
 ]
 
-// correlation matrix constants
+// colour constants
 const zeroColour = "fafa05";
 const zeroColour1 = parseInt(zeroColour.substring(0,2), 16);
 const zeroColour2 = parseInt(zeroColour.substring(2,4), 16);
@@ -45,6 +45,8 @@ const minColour = "f50606"
 const minColour1 = parseInt(minColour.substring(0,2), 16);
 const minColour2 = parseInt(minColour.substring(2,4), 16);
 const minColour3 = parseInt(minColour.substring(4,6), 16);
+
+// correlation matrix constants
 const squareSide = 30;
 const correlationMatrixLeftMargin = 120;
 const correlationMatrixRightMargin = 400;
@@ -61,6 +63,20 @@ const colourBarLeftMargin = 120;
 const colourBarWidth = 2 * squareSide;
 const colourBarHeight = 12 * squareSide;
 
+// bar chart constants
+const barChartBarWidth = 40;
+const barChartBarGap = 5;
+const barChartMaxValue = 11 * squareSide;
+const barChartLeftMargin = 120;
+const barChartRightMargin = 100;
+const barChartTopMargin = 40;
+const barChartBottomMargin = 150;
+const barChartWidth = 10 * barChartBarWidth + 11 * barChartBarGap +
+    barChartLeftMargin + barChartRightMargin;
+const barChartHeight = barChartMaxValue + barChartTopMargin +
+    barChartBottomMargin;
+const barChartTitle = "Top 10 Countries by ";
+
 // map constants
 const mapTitle = "Economic Performance Compared Worldwide";
 const mapLeftMargin = 60;
@@ -74,7 +90,7 @@ const selectorHeight = mapInternalHeight / economic_metric_names.length;
 const selectorPaneWidth = 200;
 
 // spider chart constants
-const spiderChartLeftMargin = 0;
+const spiderChartLeftMargin = 130;
 const spiderChartTopMargin = 40;
 const spiderChartHeight = 500;
 const spiderChartWidth = 500;
@@ -113,6 +129,15 @@ function getHTMLColour(min, max, value, withNegatives) {
     return result.toUpperCase();
 }
 
+function getCurrentMetric(data, country) {
+    for (var i = 0; i < data.length; i++) {
+        if (data[i]["Country Name"] == country) {
+            metricName = economic_metric_names[selectedEconomicMetric];
+            return parseInt(data[i][metricName]);
+        }
+    }
+}
+
 const selectorUnselectedColour = getHTMLColour(0, 4, 2, false);
 const selectorUnselectedHoverColour = getHTMLColour(0, 4, 1, false);
 const selectorSelectedColour = getHTMLColour(0, 4, 3, false);
@@ -120,6 +145,7 @@ const selectorSelectedColour = getHTMLColour(0, 4, 3, false);
 d3.csv(dataPath).then(function(data) {
     fillMap(data);
     fillSpiderDiagram("China", data);
+    fillBarChart(data);
 });
 
 d3.csv(correlationPath).then((data) => {

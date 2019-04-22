@@ -9,19 +9,12 @@ function getColour(data, country) {
     return getHTMLColour(extent[0], extent[1], value, false);
 }
 
-function getCurrentMetric(data, country) {
-    for (var i = 0; i < data.length; i++) {
-        if (data[i]["Country Name"] == country) {
-            metricName = economic_metric_names[selectedEconomicMetric];
-            return parseInt(data[i][metricName]);
-        }
-    }
-}
-
 function fillMap(data) {
     div = d3.select("#map")
         .style("width", mapWidth + selectorPaneWidth)
         .style("height", mapHeight)
+        .style("position", "relative")
+        .style("bottom", barChartHeight)
     // title
     div.append("text")
         .attr("class", "sectionTitle")
@@ -125,6 +118,7 @@ function fillMap(data) {
             d3.select("#mapSubtitle")
                 .html("")
                 .text(economic_metric_names[selectedEconomicMetric] + ":")
+            fillBarChart(data);
             geoJsonLayer.setStyle(mapChange)
         })
     selectors.append("rect")

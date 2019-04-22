@@ -23,14 +23,14 @@ function fillCorrelationMatrix(data) {
     // svg
     svg = d3.select("#correlationMatrix")
         .append("svg")
+        .attr("y", correlationMatrixTopMargin)
         .attr("width", correlationMatrixWidth)
         .attr("height", correlationMatrixHeight);
     // title
     svg.append("text")
         .attr("class", "sectionTitle")
-        .text(correlationMatrixTitle)
-        .attr("x", correlationMatrixLeftMargin / 2)
         .attr("y", correlationMatrixTopMargin / 2)
+        .text(correlationMatrixTitle)
     // container
     g = svg.append("g")
         .attr("width", correlationMatrixWidth - correlationMatrixLeftMargin)
@@ -40,7 +40,7 @@ function fillCorrelationMatrix(data) {
     // cells
     g.selectAll("rect")
         .data(data).enter()
-        .append("g").append("rect")
+        .append("rect")
         .attr("class", "cell")
         .attr("width", squareSide)
         .attr("height", squareSide)
@@ -59,7 +59,7 @@ function fillCorrelationMatrix(data) {
         .selectAll("text")
         .attr("class", "legend")
         .style("text-anchor", "end")
-        .attr("transform", (d) => {return "rotate(-45)"})
+        .attr("transform", "rotate(-45)")
     // colour bar gradient definition
     topHalfGradient = g
         .append("linearGradient")
