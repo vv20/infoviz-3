@@ -7,12 +7,6 @@ function fillSpiderDiagram(country, data) {
         .attr("height", spiderChartHeight)
         .style("position", "relative")
         .style("left", spiderChartLeftMargin)
-    // title
-    svg.append("text")
-        .attr("class", "sectionTitle")
-        .text(spiderChartTitle + country)
-        .attr("x", spiderChartLeftMargin / 2)
-        .attr("y", spiderChartTopMargin / 2)
     population_extent = d3.extent(data, (d) => {
         return parseFloat(d["Population (Millions)"]);
     });
@@ -34,6 +28,11 @@ function fillSpiderDiagram(country, data) {
     centerY = spiderChartHeight / 2;
     angle = (i) => {return i * 2 * Math.PI / freedom_indices.length;};
     // title
+    svg.append("text")
+        .attr("class", "sectionTitle")
+        .text(spiderChartTitle + country)
+        .attr("x", spiderChartLeftMargin / 2)
+        .attr("y", spiderChartTopMargin / 2)
     // radial axis
     svg.selectAll("line")
         .data(freedom_indices).enter()
@@ -48,10 +47,10 @@ function fillSpiderDiagram(country, data) {
         .style("stroke-width", "1");
     // labels
     svg.selectAll("text")
-        .data(freedom_indices).enter()
+        .data(freedom_index_names).enter()
         .append("text")
         .attr("class", "legend")
-        .text((d, i) => {return freedom_index_names[i]})
+        .text((d) => {return d})
         .attr("text-anchor", "middle")
         .attr("x", (d, i) => {return centerX + Math.cos(angle(i)) *
                 spiderChartLegendRadius})
