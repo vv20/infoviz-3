@@ -19,6 +19,10 @@
     position: relative;
 }
 
+#spider {
+    position: relative;
+}
+
 .sectionTitle {
     font-size: 22;
     font-weight: bold;

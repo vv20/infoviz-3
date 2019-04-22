@@ -1,7 +1,18 @@
 function fillSpiderDiagram(country, data) {
-    svg = d3.select("#spider").append("svg")
+    div = d3.select("#spider").html("")
+        .style("left", mapWidth + selectorPaneWidth)
+        .style("bottom", mapHeight)
+    svg = div.append("svg")
         .attr("width", spiderChartWidth)
         .attr("height", spiderChartHeight)
+        .style("position", "relative")
+        .style("left", spiderChartLeftMargin)
+    // title
+    svg.append("text")
+        .attr("class", "sectionTitle")
+        .text(spiderChartTitle + country)
+        .attr("x", spiderChartLeftMargin / 2)
+        .attr("y", spiderChartTopMargin / 2)
     population_extent = d3.extent(data, (d) => {
         return parseFloat(d["Population (Millions)"]);
     });

@@ -21,7 +21,7 @@ economic_metric_names = [
     "Income Tax Rate (%)",
     "Corporate Tax Rate (%)",
     "Tax Burden % of GDP",
-    "Gov't Expenditure % of GDP",
+    "Gov't Expenditure % of GDP ",
     "GDP (Billions, PPP)",
     "GDP Growth Rate (%)",
     "5 Year GDP Growth Rate (%)",
@@ -64,6 +64,7 @@ const colourBarHeight = 12 * squareSide;
 // map constants
 const mapTitle = "Economic Performance Compared Worldwide";
 const mapLeftMargin = 60;
+const mapRightMargin = 10;
 const mapTopMargin = 40;
 const mapInternalWidth = 600;
 const mapInternalHeight = 400;
@@ -73,15 +74,17 @@ const selectorHeight = mapInternalHeight / economic_metric_names.length;
 const selectorPaneWidth = 200;
 
 // spider chart constants
-const spiderChartLeftMargin = 120
+const spiderChartLeftMargin = 0;
+const spiderChartTopMargin = 40;
 const spiderChartHeight = 500;
 const spiderChartWidth = 500;
 const minCircleRadius = 10;
 const maxCircleRadius = 100;
-const spiderChartCenterColour = "#C10505";
+const spiderChartCenterColour = "#" + minColour;
 const spiderChartRadius = 150;
 const spiderChartLegendRadius = 190;
-const spiderChartFillColour = "#F43E62";
+const spiderChartFillColour = "#" + minColour;
+const spiderChartTitle = "Freedom Indices of "
 
 function getHTMLColour(min, max, value, withNegatives) {
     if (value < 0 && withNegatives) {

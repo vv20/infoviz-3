@@ -34,15 +34,58 @@ function fillMap(data) {
     // actual map
     d3.json("countries.geojson").then((mapData) => {
         map = L.map("mapInternal").setView([0,0], 1);
-        style = function(feature) {
+        // style setting function
+        style = (feature) => {
             return {
                 fillColor: getColour(data, feature.properties.ADMIN),
                 weight: 2,
-                color: "black"
+                color: "black",
+                fillOpacity: 1
             };
         }
-        geoJsonLayer = L.geoJson(mapData, {style: style}).addTo(map);
+        // hover callback
+        hover = (feature, layer) => {
+            feature.layer.openPopup();
+        }
+        // unhover callback
+        unhover = (feature) => {
+            feature.layer.closePopup();
+        }
+        // click callback
+        click = (country) => {
+            return (feature) => {
+                fillSpiderDiagram(country, data);
+            }
+        }
+        // binding function
+        onEachFeature = (feature, layer) => {
+            layer.on({
+                mouseover: hover,
+                click: click(feature.properties.ADMIN)
+            })
+        }
+        geoJsonLayer = L.geoJson(mapData, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map);
     });
+    // map control
+//  ctl = L.Control.extend({
+//      options: {
+//          position: "bottomleft"
+//      }
+//  });
+//  ctl.update = function (props) {
+//      this._div.innerHTML = '<text class="legend"><b>' +
+//          economic_metric_names[selectedEconomicMetric] + '</b></text>';
+//  }
+//  ctl.onAdd = function(map) {
+//      console.log(this)
+//      this._div = L.DomUtil.create("div", "info");
+//      this.update();
+//      return this._div;
+//  }
+//  map.addControl(ctl);
     // selectors
     mapChange = (feature) => {
         return {
@@ -51,7 +94,7 @@ function fillMap(data) {
     }
     selectors = div.append("svg")
         .style("position", "relative")
-        .style("left", mapLeftMargin + mapInternalWidth)
+        .style("left", mapInternalWidth + mapRightMargin)
         .style("bottom", mapInternalHeight)
         .attr("width", selectorPaneWidth)
         .attr("height", mapInternalHeight)
