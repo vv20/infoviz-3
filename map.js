@@ -45,33 +45,19 @@ function fillMap(data) {
                 fillOpacity: 1
             };
         }
-        // hover callback
-        hover = (country) => {
+        // click callback
+        click = (country) => {
             return (feature) => {
                 d3.select("#mapSubtitle")
                     .html("")
                     .text(economic_metric_names[selectedEconomicMetric] +
                     ": " + getCurrentMetric(data, country))
-            }
-        }
-        // unhover callback
-        unhover = (feature) => {
-            d3.select("#mapSubtitle")
-                .html("")
-                .text(economic_metric_names[selectedEconomicMetric] +
-                ":")
-        }
-        // click callback
-        click = (country) => {
-            return (feature) => {
                 fillSpiderDiagram(country, data);
             }
         }
         // binding function
         onEachFeature = (feature, layer) => {
             layer.on({
-                mouseover: hover(feature.properties.ADMIN),
-                mouseout: unhover,
                 click: click(feature.properties.ADMIN)
             })
         }
