@@ -1,3 +1,6 @@
+/**
+ * Code adapted from https://bl.ocks.org/Bl3f/cdb5ad854b376765fa99
+ */
 function fillCorrelationMatrix(data) {
     values = data.map((d) => {return d.correlation}, data);
     minValue = Math.min(...values);

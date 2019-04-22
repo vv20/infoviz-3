@@ -68,7 +68,7 @@ const barChartBarWidth = 40;
 const barChartBarGap = 5;
 const barChartMaxValue = 11 * squareSide;
 const barChartLeftMargin = 120;
-const barChartRightMargin = 100;
+const barChartRightMargin = 140;
 const barChartTopMargin = 40;
 const barChartBottomMargin = 150;
 const barChartWidth = 10 * barChartBarWidth + 11 * barChartBarGap +
@@ -146,6 +146,8 @@ d3.csv(dataPath).then(function(data) {
     fillMap(data);
     fillSpiderDiagram(selectedCountry, data);
     fillBarChart(data);
+    d3.select("#description").style("width", correlationMatrixWidth +
+        barChartWidth);
 });
 
 d3.csv(correlationPath).then((data) => {

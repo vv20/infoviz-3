@@ -9,6 +9,9 @@ function getColour(data, country) {
     return getHTMLColour(extent[0], extent[1], value, false);
 }
 
+/**
+ * Code adapted from https://leafletjs.com/examples/choropleth/
+ */
 function fillMap(data) {
     div = d3.select("#map")
         .style("width", mapWidth + selectorPaneWidth)
@@ -26,7 +29,13 @@ function fillMap(data) {
         .attr("id", "mapSubtitle")
         .attr("x", mapLeftMargin / 2)
         .text(economic_metric_names[selectedEconomicMetric] + ": " +
-            getCurrentMetric(data, selectedCountry));
+            getCurrentMetric(data, selectedCountry))
+        .append("br");
+    // description
+    div.append("text")
+        .attr("class", "description")
+        .text("Click on a country to see its freedom indices, or click on an " +
+            "economic metric to see how it varies worldwide.")
     // container for the actual map
     map = div.append("div")
         .attr("x", mapLeftMargin)
@@ -53,6 +62,7 @@ function fillMap(data) {
                     .html("")
                     .text(economic_metric_names[selectedEconomicMetric] +
                     ": " + getCurrentMetric(data, country))
+                    .append("br");
                 selectedCountry = country;
                 fillSpiderDiagram(country, data);
             }
@@ -64,7 +74,8 @@ function fillMap(data) {
                     .html("")
                     .text(economic_metric_names[selectedEconomicMetric] +
                         ": " + getCurrentMetric(data, selectedCountry) + " (" +
-                        getCurrentMetric(data, country) + ")");
+                        getCurrentMetric(data, country) + ")")
+                    .append("br");
             }
         }
         // unhover callback
@@ -73,6 +84,7 @@ function fillMap(data) {
                 .html("")
                 .text(economic_metric_names[selectedEconomicMetric] +
                 ": " + getCurrentMetric(data, selectedCountry))
+                    .append("br");
         }
         // binding function
         onEachFeature = (feature, layer) => {
@@ -125,6 +137,7 @@ function fillMap(data) {
             d3.select("#mapSubtitle")
                 .html("")
                 .text(economic_metric_names[selectedEconomicMetric] + ":")
+                .append("br");
             fillBarChart(data);
             geoJsonLayer.setStyle(mapChange)
         })

@@ -30,7 +30,25 @@ function fillSpiderDiagram(country, data) {
         .attr("class", "sectionTitle")
         .text(spiderChartTitle + country)
         .attr("x", spiderChartLeftMargin / 2 + barChartLeftMargin)
-        .attr("y", spiderChartTopMargin / 2)
+        .attr("y", spiderChartTopMargin / 2);
+    // description
+    svg.append("text")
+        .attr("class", "description")
+        .text("This chart shows the values for each freedom index in")
+        .attr("x", spiderChartLeftMargin / 2 + barChartLeftMargin)
+        .attr("y", spiderChartTopMargin)
+    svg.append("text")
+        .attr("class", "description")
+        .text("the selected country. The size of the circle in the middle")
+        .attr("x", spiderChartLeftMargin / 2 + barChartLeftMargin)
+        .attr("y", spiderChartTopMargin * 1.5)
+    svg.append("text")
+        .attr("class", "description")
+        .text("indicates population size of the country.")
+        .attr("x", spiderChartLeftMargin / 2 + barChartLeftMargin)
+        .attr("y", spiderChartTopMargin * 2)
+    svg = svg.append("g")
+        .attr("transform", "translate(0," + spiderChartTopMargin + ")");
     // radial axis
     svg.selectAll("line")
         .data(freedom_indices).enter()
