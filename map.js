@@ -1,5 +1,5 @@
 selectedEconomicMetric = 0
-selectedCountry = "";
+selectedCountry = "China";
 
 function getColour(data, country) {
     extent = d3.extent(data, (d) => {
@@ -25,7 +25,8 @@ function fillMap(data) {
         .attr("class", "sectionTitle")
         .attr("id", "mapSubtitle")
         .attr("x", mapLeftMargin / 2)
-        .text(economic_metric_names[selectedEconomicMetric] + ":");
+        .text(economic_metric_names[selectedEconomicMetric] + ": " +
+            getCurrentMetric(data, selectedCountry));
     // container for the actual map
     map = div.append("div")
         .attr("x", mapLeftMargin)
@@ -52,12 +53,32 @@ function fillMap(data) {
                     .html("")
                     .text(economic_metric_names[selectedEconomicMetric] +
                     ": " + getCurrentMetric(data, country))
+                selectedCountry = country;
                 fillSpiderDiagram(country, data);
             }
+        }
+        // hover callback
+        hover = (country) => {
+            return (feature) => {
+                d3.select("#mapSubtitle")
+                    .html("")
+                    .text(economic_metric_names[selectedEconomicMetric] +
+                        ": " + getCurrentMetric(data, selectedCountry) + " (" +
+                        getCurrentMetric(data, country) + ")");
+            }
+        }
+        // unhover callback
+        unhover = (feature) => {
+            d3.select("#mapSubtitle")
+                .html("")
+                .text(economic_metric_names[selectedEconomicMetric] +
+                ": " + getCurrentMetric(data, selectedCountry))
         }
         // binding function
         onEachFeature = (feature, layer) => {
             layer.on({
+                mouseover: hover(feature.properties.ADMIN),
+                mouseout: unhover,
                 click: click(feature.properties.ADMIN)
             })
         }
